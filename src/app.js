@@ -20,6 +20,8 @@ app.get("/ping", (req, res) => {
   res.json({ msg: "pong" });
 });
 
+app.use("/api/v1/empleados", ROUTES.Employees);
+
 app.use("/api/v1/departamentos", ROUTES.Departments);
 
 module.exports = app;

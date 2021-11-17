@@ -29,6 +29,17 @@ router.get("/:id/manager", async (req, res) => {
   res.status(200).json(manager);
 });
 
+// GET /api/v1/departamentos/:id/empleado
+router.get("/:id/empleado", async (req, res) => {
+  const depto = await DB.Departmens.getById(req.params.id);
+  if (!depto) {
+    res.status(404).send("Departamento no encontrado!!!");
+    return;
+  }
+  const empleados = await DB.Departmens.getEmpleados(depto);
+  res.status(200).json(empleados);
+});
+
 // POST /api/v1/departamentos
 router.post("/", async (req, res) => {
   const { dept_no, dept_name } = req.body;

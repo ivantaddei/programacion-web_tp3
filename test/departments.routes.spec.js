@@ -24,7 +24,9 @@ describe("Rest API Departamentos", () => {
   });
 
   it("GET /api/v1/departamentos/d009/manager", async () => {
-    const response = await request(app).get("/api/v1/departamentos/d009/manager");
+    const response = await request(app).get(
+      "/api/v1/departamentos/d009/manager"
+    );
     expect(response).toBeDefined();
     expect(response.statusCode).toBe(200);
     const manager = response.body;
@@ -42,7 +44,7 @@ describe("Rest API Departamentos", () => {
     expect(response.text).toBe("Departamento no encontrado!!!");
   });
 
-  it("POST /api/v1/departamentos  sin parámetros", async () => {
+  it("POST /api/v1/departamentos sin parámetros", async () => {
     const response = await request(app).post("/api/v1/departamentos").send();
     expect(response).toBeDefined();
     expect(response.statusCode).toBe(400);
@@ -59,7 +61,7 @@ describe("Rest API Departamentos", () => {
     expect(response.text).toBe("dept_name es Requerido!!!");
   });
 
-  it("POST /api/v1/departamentos  sólo con dept_name", async () => {
+  it("POST /api/v1/departamentos sólo con dept_name", async () => {
     const depto = { dept_name: "Depto nueve nueve nueve" };
     const response = await request(app)
       .post("/api/v1/departamentos")
